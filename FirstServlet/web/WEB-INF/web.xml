@@ -42,11 +42,20 @@
 
     <servlet>
         <servlet-name>RequestMethod</servlet-name>
-        <servlet-class>com.mark.RquestMethod</servlet-class>
+        <servlet-class>com.mark.RequestMethod</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RequestMethod</servlet-name>
         <url-pattern>/req</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Annotation</servlet-name>
+        <servlet-class>com.mark.AnnotationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Annotation</servlet-name>
+        <url-pattern>/aaa</url-pattern>
     </servlet-mapping>
 
 </web-app>
