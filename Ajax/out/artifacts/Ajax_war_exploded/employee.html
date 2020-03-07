@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" id="btn1" value="Employee List"/>
+    <input type="button" id="btn2" value="Job List"/>
+    <input type="button" id="btn3" value="Department List"/>
+    <div id="showList"></div>
+</body>
+<script>
+    var button1 = document.getElementById("btn1");
+    var button2 = document.getElementById("btn2");
+    var button3 = document.getElementById("btn3");
+    var xmlHttp;
+    if(window.XMLHttpRequest){
+        xmlHttp = new XMLHttpRequest();
+    }else{
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlHttp.open("GET", "/Ajax/employeeList", true);
+    xmlHttp.send();
+    var employeeList;
+    xmlHttp.onreadystatechange = function(){
+        if(xmlHttp.readyState === 4 && xmlHttp.status === 200){
+            employeeList = xmlHttp.responseText;
+            employeeList = JSON.parse(employeeList);
+            var emp;
+            //click name list
+            button1.onclick = function(){
+                var html = "<ul>";
+                for(var i = 0; i < employeeList.length; i++){
+                    emp = employeeList[i];
+                    html += "<li>" + emp.name + "</li>";
+                }
+                html += "</ul>"
+                document.getElementById("showList").innerHTML = html;
+            }
+            button2.onclick = function(){
+                var html = "<ul>";
+                for(var i = 0; i < employeeList.length; i++){
+                    emp = employeeList[i];
+                    html += "<li>" + emp.job + "</li>";
+                }
+                html += "</ul>"
+                document.getElementById("showList").innerHTML = html;
+            }
+            button3.onclick = function(){
+                var html = "<ul>";
+                for(var i = 0; i < employeeList.length; i++){
+                    emp = employeeList[i];
+                    html += "<li>" + emp.department + "</li>";
+                }
+                html += "</ul>"
+                document.getElementById("showList").innerHTML = html;
+            }
+        }
+    }
+
+
+</script>
+</html>

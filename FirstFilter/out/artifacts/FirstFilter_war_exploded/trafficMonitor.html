@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic Monitor</title>
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/query-3.4.1.min.js"></script>
+</head>
+<body>
+<body>
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        function showChart() {
+            $.ajax({
+                "url": "./trafficServlet",
+                "type": "GET",
+                "dataType": "json",
+                "success": function (json) {
+                    var timeList = json.time;
+                    var trafficList = json.traffic;
+
+                    var myChart = echarts.init(document.getElementById('main'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: 'Request Traffic Monitor'
+                        },
+                        legend: {
+                            data: ['traffic']
+                        },
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: timeList
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: [{
+                            name: "traffic",
+                            data: trafficList,
+                            type: 'line',
+                            areaStyle: {}
+                        }]
+                    };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                }
+            })
+        }
+        // 基于准备好的dom，初始化echarts实例
+        window.setInterval("showChart()", 1000);
+
+    </script>
+</body>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="FirstJSP:war exploded">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="FirstJSP_war exploded.war">
+      <element id="javaee-facet-resources" facet="FirstJSP/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="FirstJSP" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

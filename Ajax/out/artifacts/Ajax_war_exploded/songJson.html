@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SongList</title>
+</head>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script>
+    $(function(){
+        $("#btn1").on("click", function(){
+            $.ajax({
+                "url": "/Ajax//SongsList",
+                "type":"post",
+                "data":"type=rap",
+                "dataType":"json",
+                "success":function(json){
+                    $(".song_list").html("");
+                    for(var i = 0; i < json.length; i++){
+                        $(".song_list").append("<li>" + json[i].name + "</li>");
+                    }
+                }
+            })
+        });
+        $("#btn2").on("click", function(){
+            $.ajax({
+                "url": "/Ajax//SongsList",
+                "type":"post",
+                "data":"type=pop",
+                "dataType":"json",
+                "success":function(json){
+                    $(".song_list").html("");
+                    for(var i = 0; i < json.length; i++){
+                        $(".song_list").append("<li>" + json[i].name + "</li>");
+                    }
+                }
+            })
+        });
+        $("#btn3").on("click", function(){
+            $.ajax({
+                "url": "/Ajax//SongsList",
+                "type":"post",
+                "data":"type=classic",
+                "dataType":"json",
+                "success":function(json){
+                    $(".song_list").html("");
+                    for(var i = 0; i < json.length; i++){
+                        $(".song_list").append("<li>" + json[i].name + "</li>");
+                    }
+                }
+            })
+        });
+    })
+
+</script>
+<body>
+    <input type="button" id="btn1" value="rap music"/>
+    <input type="button" id="btn2" value="pop music"/>
+    <input type="button" id="btn3" value="classic music"/>
+    <div class="song_list">
+        <ul></ul>
+    </div>
+</body>
+
+
+</html>

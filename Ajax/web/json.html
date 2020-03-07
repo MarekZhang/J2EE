@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Json</title>
+</head>
+<body>
+    <div id="json_div"></div>
+</body>
+<script>
+    var xmlHttp;
+    if(window.XMLHttpRequest){
+        xmlHttp = new XMLHttpRequest();
+    }else{
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlHttp.open("GET", "/Ajax/jsonList",true);
+    xmlHttp.send();
+
+    var newsJson;
+    var html="";
+    xmlHttp.onreadystatechange = function(){
+        if(xmlHttp.readyState === 4 && xmlHttp.status === 200){
+            var xmlText = xmlHttp.responseText;
+            newsJson = JSON.parse(xmlText);
+            console.log(newsJson);
+        }
+        for(var i = 0; i < newsJson.length; i++){
+            var news = newsJson[i];
+            html += "<h2>" + news.title + "</h2>";
+            html += "<h2>" + news.content + news.date + "</h2>";
+            html += "</hr";
+        }
+        document.getElementById("json_div").innerHTML = html;
+
+    }
+
+</script>
+</html>

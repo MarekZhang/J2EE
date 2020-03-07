@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jquery</title>
+</head>
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        $.ajax({
+            "url": "/Ajax/jsonList",
+            "type": "GET",
+            "data": "title=programming",
+            dataType:"json",
+            "success": function (json) {
+                console.log(json);
+                for(var i =0; i < json.length; i++){
+                    $("#list_div").append("<h2>" + json[i].title + "</h2>");
+                }
+            }
+        })
+    })
+</script>
+<body>
+<div id="list_div"></div>
+
+</body>
+
+
+</html>

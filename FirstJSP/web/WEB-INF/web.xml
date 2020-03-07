@@ -3,4 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>default.html</welcome-file>
+    </welcome-file-list>
+    <context-param>
+        <param-name>google</param-name>
+        <param-value>Http://google.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>Title</param-name>
+        <param-value>Google Home Page</param-value>
+    </context-param>
 </web-app>
